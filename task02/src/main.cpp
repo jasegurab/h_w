@@ -12,11 +12,11 @@ int number (){
 
 int check(int a, int b){
   if (a == b){
-    std::cout << "correct!";
+    std::cout << "correct!" <<std::endl;
     return 0;
   }
   else{
-    std::cout << "incorrect!";
+    std::cout << "incorrect!" <<std::endl;
     return 1;
   }
 }
