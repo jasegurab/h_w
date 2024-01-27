@@ -21,7 +21,7 @@ int check(int a, int b){
   }
 }
 
-int main (){
+int run (){
   int i;
   int guess;
   int n=number();
@@ -41,4 +41,9 @@ int main (){
   }
   std::cout << "the number was " << n << std::endl;
   return 0;
+}
+int main(int argc, char *argv[]){
+
+  int number_of_guesses=3;
+  run();
 }
