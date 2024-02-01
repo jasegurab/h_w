@@ -1,49 +1,84 @@
 // Guess random number
-#include <iostream>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
-int number (){
-  int n;
-  srand(time(NULL));
-  n = rand() % 5;
-  return n;
+#include <iostream>
+
+int number() {
+    int n;
+    srand(time(NULL));
+    n = (rand() % 4) + 1;
+    return n;
 }
 
-int check(int a, int b){
-  if (a == b){
-    std::cout << "correct!" <<std::endl;
-    return 0;
-  }
-  else{
-    std::cout << "incorrect!" <<std::endl;
-    return 1;
-  }
+int check(int a, int b) {
+    if (a == b) {
+        std::cout << "correct!" << std::endl;
+        return 0;
+    } else {
+        std::cout << "incorrect!" << std::endl;
+        return 1;
+    }
 }
 
-int run (){
-  int i;
-  int guess;
-  int n=number();
-
-  for (i=0;i<3;i++){
-    std::cout << "enter number between 0 and 5" <<std::endl;
+int input_guess() {
+   int guess;
     std::cin >> guess;
 
-    if(std::cin.fail()){
-      std::cout << "that was not a number" <<std::endl;
-      std::cin.clear();
-      return 0;
+    if (std::cin.fail() || guess > 5) {
+        std::cin.clear();
+        return 0;
+    } else {
+        return guess;
     }
-    else {
-      std::cout << "using " << guess << " as your guess" << std::endl;}
-    check(guess,n);
-  }
-  std::cout << "the number was " << n << std::endl;
-  return 0;
 }
-int main(int argc, char *argv[]){
 
-  int number_of_guesses=3;
-  run();
+int run(int number_of_guesses) {
+    int i=0;
+    int result;
+    int guess;
+    int n = number();
+
+    while (i < number_of_guesses) {
+        std::cout << "Enter a number between 1 and 5" << std::endl;
+guess=input_guess();
+if (guess == 0){
+        std::cout << "input not valid" << std::endl;
+        return 0;
+}
+else{
+        std::cout << "using " << guess << " as your guess" << std::endl;}
+        result = check(guess, n);
+        if (result == 0) {
+            return 0;
+        }
+        // std::cout << u << std::endl;
+i+=1;
+}
+    std::cout << "the number was " << n << std::endl;
+    return 0;
+}
+
+int test(int number_of_guesses) {
+    for (int i = 1; i < 10; i++) {
+        int run_test = run(number_of_guesses);
+        std::cout << "result " << run_test << std::endl;
+    }
+    return 0;
+}
+
+int main(int argc, char* argv[]) {
+    int number_of_guesses = 3;
+    /* if (strcmp(argv[1], "test") == 0) {
+        std::cout << "this is the test" << std::endl;
+        int deb = 1;
+        test(number_of_guesses);
+        return 0;
+    }
+    int deb = 0;
+    for (int i = 1; i < argc; i++) {
+        printf("%d: %s\n", i, argv[i]);
+     } */
+    run(number_of_guesses);
 }
