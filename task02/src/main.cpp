@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <cmath>
 #include <iostream>
 
 int number() {
@@ -23,39 +24,44 @@ int check(int a, int b) {
 }
 
 int input_guess() {
-   int guess;
-    std::cin >> guess;
+    int guess;
+    double input;
+    std::cin >> input;
 
-    if (std::cin.fail() || guess > 5) {
+    if (std::cin.fail()) {
         std::cin.clear();
         return 0;
     } else {
+        guess = std::round(input);
         return guess;
     }
 }
 
 int run(int number_of_guesses) {
-    int i=0;
+    int i = 0;
     int result;
     int guess;
     int n = number();
 
     while (i < number_of_guesses) {
         std::cout << "Enter a number between 1 and 5" << std::endl;
-guess=input_guess();
-if (guess == 0){
-        std::cout << "input not valid" << std::endl;
-        return 0;
-}
-else{
-        std::cout << "using " << guess << " as your guess" << std::endl;}
+        guess = input_guess();
+        std::cout << "using " << guess << " as your guess" << std::endl;
+        if (guess > 5) {
+            std::cout << "input not valid" << std::endl;
+            return 0;
+        }
+        if (guess <= 0) {
+            std::cout << "input not valid" << std::endl;
+            return 0;
+        }
         result = check(guess, n);
         if (result == 0) {
             return 0;
         }
-        // std::cout << u << std::endl;
-i+=1;
-}
+        std::cout << "guess " << i + 1 << " out of " << number_of_guesses << std::endl;
+        i += 1;
+    }
     std::cout << "the number was " << n << std::endl;
     return 0;
 }
@@ -69,7 +75,7 @@ int test(int number_of_guesses) {
 }
 
 int main(int argc, char* argv[]) {
-    int number_of_guesses = 3;
+    int number_of_guesses = 5;
     /* if (strcmp(argv[1], "test") == 0) {
         std::cout << "this is the test" << std::endl;
         int deb = 1;
