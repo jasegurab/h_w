@@ -27,11 +27,10 @@ int input_guess() {
     int guess;
     std::cin >> guess;
 
-    if (!std::cin.good()) {
+    if (std::cin.fail()) {
         std::cin.clear();
         return 0;
-    }
-    if (guess > 5 || guess <= 0) {
+    } else if (guess > 5 || guess <= 0) {
         std::cout << "input not valid" << std::endl;
         return 0;
     } else {
@@ -63,7 +62,7 @@ int run(int number_of_guesses) {
             return 0;
         }
     }
-return 0;
+    return 0;
 }
 int test(int number_of_guesses) {
     for (int i = 1; i < 10; i++) {
@@ -75,15 +74,14 @@ int test(int number_of_guesses) {
 
 int main(int argc, char* argv[]) {
     int number_of_guesses = 5;
-    /* if (strcmp(argv[1], "test") == 0) {
+    if (strcmp(argv[1], "test") == 0) {
         std::cout << "this is the test" << std::endl;
-        int deb = 1;
         test(number_of_guesses);
         return 0;
     }
     int deb = 0;
     for (int i = 1; i < argc; i++) {
         printf("%d: %s\n", i, argv[i]);
-     } */
+    }
     run(number_of_guesses);
 }
