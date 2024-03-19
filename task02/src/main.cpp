@@ -73,15 +73,18 @@ int test(int number_of_guesses) {
 }
 
 int main(int argc, char* argv[]) {
-    int number_of_guesses = 5;
-    if (strcmp(argv[1], "test") == 0) {
-        std::cout << "this is the test" << std::endl;
-        test(number_of_guesses);
-        return 0;
-    }
-    int deb = 0;
-    for (int i = 1; i < argc; i++) {
-        printf("%d: %s\n", i, argv[i]);
-    }
-    run(number_of_guesses);
+    int number_of_guesses;
+
+if (argc >= 0) {
+    number_of_guesses = 3;
+        std::cout << "number_of_guesses= " << number_of_guesses << std::endl;
+        // run(number_of_guesses);
+if (strcmp(argv[1], "test") == 0) {
+  number_of_guesses = 10;
+  std::cout << "this is the test" << std::endl;
+  test(number_of_guesses);
+  return 0;
+} else
+return 0;
+}
 }
