@@ -71,13 +71,10 @@ int test(int number_of_guesses) {
     while (i < number_of_guesses) {
         int n2 = (rand() % 5) + 1;
         if (!compare_values(n, n2)) {
-            std::cout << "random 1 -> " << n << " random 2 -> " << n2 << " Guessed " << std::endl;
             G = G + 1;
         } else
-            std::cout << "random 1 -> " << n << " random 2 -> " << n2 << " Wrong " << std::endl;
-        i += 1;
+            i += 1;
     }
-
     std::cout << "total Guessed = " << G << " and total Wrong = " << number_of_guesses - G << std::endl;
     return 0;
 }
@@ -85,22 +82,19 @@ int test(int number_of_guesses) {
 #ifndef TEST
 int main() {
     int number_of_guesses = 3;
-    return test(number_of_guesses);
+    // test(number_of_guesses);
+    return 0;
 }
 #else
 int main(int argc, char* argv[]) {
     int number_of_guesses;
 
-    if (argc >= 0) {
+    if (argc == 1) {
         number_of_guesses = 3;
         std::cout << "number_of_guesses= " << number_of_guesses << std::endl;
-        // run(number_of_guesses);
-        if (strcmp(argv[1], "test") == 0) {
-            number_of_guesses = 10;
-            std::cout << "this is the test" << std::endl;
-            test(number_of_guesses);
-            return 0;
-        } else
-            return 0;
-    }
+        run(number_of_guesses);
+    } else
+        std::cout << "bad input, try again" << std::endl;
+    return 0;
+}
 #endif
