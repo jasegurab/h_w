@@ -79,7 +79,7 @@ int test(int number_of_guesses) {
     return 0;
 }
 
-#ifndef ENABLE_TEST
+#ifdef ENABLE_TEST
 int main() {
     int number_of_guesses = 3;
     test(number_of_guesses);
