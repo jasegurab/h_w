@@ -11,5 +11,8 @@ list( APPEND guess_src_files
 add_executable(guess src/main.cpp ${guess_src_files})
 target_include_directories(guess PUBLIC src/)
 
-add_executable(test test/test.cc ${guess_src_files})
-target_include_directories(test PUBLIC test/ src/)
+add_executable(test_guess test/test.cc ${guess_src_files})
+target_include_directories(test_guess PUBLIC test/ src/)
+
+enable_testing()
+add_test(mytest test_guess)
