@@ -1,5 +1,7 @@
-#include <iostream>
 #include <stdlib.h>
+
+#include <iostream>
+
 #include "guess.h"
 int test(int number_of_guesses) {
     int G = 0;
@@ -13,5 +15,10 @@ int test(int number_of_guesses) {
             i += 1;
     }
     std::cout << "total Guessed = " << G << " and total Wrong = " << number_of_guesses - G << std::endl;
+    return 0;
+}
+int main() {
+    int number_of_guesses = 10;
+    test(number_of_guesses);
     return 0;
 }
