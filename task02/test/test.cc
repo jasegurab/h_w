@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
-#include "../src/guess.h"
+#include "guess.h"
 int test(int number_of_guesses) {
     int G = 0;
     int i = 0;

@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "guess.h"
-#include "../test/test.h"
+#include "test.h"
 
 #ifdef ENABLE_TEST
 int main() {
